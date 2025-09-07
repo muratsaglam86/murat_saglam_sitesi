@@ -1,14 +1,11 @@
-// Dosya Adı: netlify/functions/youtube.js (GEÇİCİ TEST KODU)
+// Dosya Adı: netlify/functions/youtube.js
 
 const { google } = require('googleapis');
 
-// --- DEĞİŞİKLİK BURADA ---
-// API anahtarını GEÇİCİ olarak doğrudan buraya yazıyoruz.
-const MY_API_KEY = "AIzaSyCZQzpDeVU1OpyHoHXFth8StV6gtzr0nsM";
-
+// API Anahtarını Netlify'ın güvenli kasasından okur
 const youtube = google.youtube({
   version: 'v3',
-  auth: MY_API_KEY, // process.env.YOUTUBE_API_KEY yerine direkt anahtarı kullan
+  auth: process.env.YOUTUBE_API_KEY, 
 });
 
 exports.handler = async function (event, context) {
@@ -19,6 +16,10 @@ exports.handler = async function (event, context) {
       part: 'contentDetails',
       id: CHANNEL_ID,
     });
+    
+    if (!channelResponse.data.items || channelResponse.data.items.length === 0) {
+      throw new Error(`Google API, bu Kanal ID'si için bir sonuç döndürmedi. ID'yi kontrol edin.`);
+    }
 
     const uploadsPlaylistId = channelResponse.data.items[0].contentDetails.relatedPlaylists.uploads;
 
@@ -38,13 +39,16 @@ exports.handler = async function (event, context) {
 
     return {
       statusCode: 200,
+      headers: { 'Cache-Control': 'public, max-age=3600' }, // 1 saat önbellekle
       body: JSON.stringify(videos),
     };
   } catch (error) {
+    // Hata durumunda detaylı bilgi döndür
+    console.error(error); 
     return { 
       statusCode: 500, 
       body: JSON.stringify({ 
-        message: "HATA (KOD İÇİNDEKİ ANAHTARLA)",
+        message: "YouTube'dan video çekerken bir hata oluştu.",
         errorDetails: error.errors || error.toString(),
       }) 
     };
