@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Murat Sağlam – Sosyal Medya ve Prodüksiyon</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
   <style>
@@ -11,7 +11,6 @@
       --accent:#1e7f62; --accent-2:#e6f3ee;
       --card:#ffffff; --shadow:0 10px 30px rgba(0,0,0,.06);
       --radius:16px; --gap:24px;
-      --logoCell:#e7eaed; /* daha koyu grid zemini */
     }
     *{box-sizing:border-box}
     html,body{height:100%;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;line-height:1.6;overflow-x:hidden}
@@ -25,16 +24,13 @@
     h1{font-size:clamp(28px,5vw,54px);margin:8px 0 16px}
     h2{font-size:clamp(22px,3.2vw,36px);margin:0 0 14px}
 
-    /* Header */
     header{position:sticky;top:0;z-index:50;background:rgba(247,247,245,.85);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid #eee}
     .nav{display:flex;gap:18px;align-items:center;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:12px}
     .brand img{height:50px;width:auto}
     .links{display:flex;gap:18px;align-items:center}
     .links a{font-size:14px;opacity:.85}
     .links a:hover{opacity:1}
 
-    /* Hero */
     .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--gap);align-items:center;padding-top:18px}
     .hero-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
     .hero-media{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
@@ -42,7 +38,6 @@
     .hero p{color:var(--muted);font-size:18px}
     .hero .actions{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
 
-    /* Services */
     .services{margin-top:40px}
     .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
     .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
@@ -51,7 +46,6 @@
     .card h3{margin:0 0 6px;font-size:18px}
     .card p{color:var(--muted);font-size:14px;margin:0}
 
-    /* Portfolio preview */
     .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
     .tile{position:relative;border-radius:14px;overflow:hidden;background:#ddd;box-shadow:var(--shadow);cursor:pointer}
     .tile > div{background-size:cover;background-position:center;aspect-ratio:16/9;transform:scale(1.01);transition:transform .2s}
@@ -59,7 +53,6 @@
     .play{position:absolute;right:10px;bottom:10px;width:46px;height:46px;border-radius:10px;background:#fff9;border:1px solid #e5e7eb}
     .play:before{content:'';position:absolute;left:18px;top:14px;border-left:12px solid #111;border-top:9px solid transparent;border-bottom:9px solid transparent}
 
-    /* Steps */
     .steps-wrap{margin-top:40px}
     .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap)}
     .step{min-width:0;background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center}
@@ -68,41 +61,35 @@
     .step h4{margin:6px 0 6px;font-size:16px}
     .step p{margin:0;color:var(--muted);font-size:14px;word-break:break-word}
 
-    /* Clients grid */
     .logo-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
     .logo-cell{
       height:92px;border-radius:14px;
-      background:linear-gradient(180deg,#eef1f3, #e3e6ea); /* okunurluk için koyu */
-      box-shadow: inset 0 0 0 1px rgba(0,0,0,.05);
+      background:linear-gradient(180deg,#eef1f3,#e3e6ea);
+      box-shadow:inset 0 0 0 1px rgba(0,0,0,.05);
       display:grid;place-items:center;position:relative;overflow:hidden;
     }
-    /* iç kenara hafif vignette – beyaz logoları öne çıkarır */
     .logo-cell:before{
       content:"";position:absolute;inset:0;border-radius:14px;
-      box-shadow: inset 0 0 30px rgba(0,0,0,.06);
-      pointer-events:none;
+      box-shadow:inset 0 0 30px rgba(0,0,0,.06);pointer-events:none;
     }
     .logo-img{
-      max-width:none; /* JS ile ölçekleyeceğiz */
-      transform-origin:center center;
+      max-height:86px;max-width:86%;
+      object-fit:contain;transform-origin:center center;
       image-rendering:-webkit-optimize-contrast;
-      filter: drop-shadow(0 0 0.5px rgba(0,0,0,.3)); /* beyaz logolara hafif kontur */
+      filter:drop-shadow(0 0 .5px rgba(0,0,0,.28));
     }
 
-    /* Modal */
     .modal{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;place-items:center;z-index:80;padding:24px}
     .modal.open{display:grid}
     .player{width:min(100%,1100px)}
     .player iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:12px;background:#000}
     .close{position:absolute;top:16px;right:18px;width:42px;height:42px;border-radius:11px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.9);display:grid;place-items:center;font-size:22px;cursor:pointer}
 
-    /* Footer */
     footer{margin-top:60px;border-top:1px solid #e5e7eb;background:#fff}
     .footer{display:flex;justify-content:space-between;align-items:center;gap:12px}
     .footer .right{display:flex;gap:14px;align-items:center}
     .ig{width:26px;height:26px;display:inline-block}
 
-    /* Responsive */
     @media (max-width:1000px){
       .hero{grid-template-columns:1fr}
       .cards{grid-template-columns:repeat(2,1fr)}
@@ -123,9 +110,7 @@
 
 <header>
   <div class="container nav">
-    <div class="brand">
-      <img src="img/logo.png" alt="Murat Sağlam Logo">
-    </div>
+    <div class="brand"><img src="img/logo.png" alt="Murat Sağlam Logo"></div>
     <div class="links">
       <a href="#services">Hizmetlerimiz</a>
       <a href="#portfolio">Portfolyo</a>
@@ -147,7 +132,7 @@
       </div>
     </div>
     <div class="hero-media hero-card">
-      <img src="img/1.jpg" alt="Video edit timeline">
+      <img src="img/1.jpg" alt="Video edit timeline" loading="eager">
     </div>
   </section>
 
@@ -155,22 +140,10 @@
   <section id="services" class="container services">
     <h2>Hizmetlerimiz</h2>
     <div class="cards">
-      <article class="card">
-        <img src="img/2.png" alt="Stüdyo video çekimi">
-        <div class="body"><h3>Video Çekimi</h3><p>Reklam, tanıtım, röportaj, etkinlik ve kısa format içerikler.</p></div>
-      </article>
-      <article class="card">
-        <img src="img/3.png" alt="Sosyal medya yönetimi">
-        <div class="body"><h3>Sosyal Medya Yönetimi</h3><p>İçerik planı, post &amp; reels üretimi ve topluluk yönetimi.</p></div>
-      </article>
-      <article class="card">
-        <img src="img/5.jpg" alt="Drone çekimi">
-        <div class="body"><h3>Drone Çekimi</h3><p>Havadan sinematik çekimler ile etkileyici açılar.</p></div>
-      </article>
-      <article class="card">
-        <img src="img/4.png" alt="Fotoğraf çekimi">
-        <div class="body"><h3>Fotoğraf Çekimi</h3><p>Ürün, lifestyle, yemek ve e-ticaret fotoğrafları.</p></div>
-      </article>
+      <article class="card"><img src="img/2.png" alt="Stüdyo video çekimi" loading="lazy"><div class="body"><h3>Video Çekimi</h3><p>Reklam, tanıtım, röportaj, etkinlik ve kısa format içerikler.</p></div></article>
+      <article class="card"><img src="img/3.png" alt="Sosyal medya yönetimi" loading="lazy"><div class="body"><h3>Sosyal Medya Yönetimi</h3><p>İçerik planı, post &amp; reels üretimi ve topluluk yönetimi.</p></div></article>
+      <article class="card"><img src="img/5.jpg" alt="Drone çekimi" loading="lazy"><div class="body"><h3>Drone Çekimi</h3><p>Havadan sinematik çekimler ile etkileyici açılar.</p></div></article>
+      <article class="card"><img src="img/4.png" alt="Fotoğraf çekimi" loading="lazy"><div class="body"><h3>Fotoğraf Çekimi</h3><p>Ürün, lifestyle, yemek ve e-ticaret fotoğrafları.</p></div></article>
     </div>
   </section>
 
@@ -178,18 +151,10 @@
   <section class="container steps-wrap" aria-labelledby="steps-title">
     <h2 id="steps-title">Başvuru Adımları</h2>
     <div class="steps">
-      <div class="step"><div class="step-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.19 18a19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.81.3 1.6.54 2.36a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.72-1.72a2 2 0 0 1 2.11-.45c.76.24 1.55.42 2.36.54A2 2 0 0 1 22 16.92z"/></svg>
-      </div><h4>İletişim</h4><p>Bizimle iletişime geçin.</p></div>
-      <div class="step"><div class="step-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-      </div><h4>Araştırma ve Strateji</h4><p>İş hedeflerinize uygun yol haritası.</p></div>
-      <div class="step"><div class="step-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20l9-5-9-5-9 5 9 5z"/><path d="M12 12V4l9 5"/></svg>
-      </div><h4>Markanızı Oluşturma</h4><p>Üretim planı, çekim ve kurgu.</p></div>
-      <div class="step"><div class="step-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
-      </div><h4>Hedefe Ulaşma</h4><p>Etkili dağıtım ve performans takibi.</p></div>
+      <div class="step"><div class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.19 18a19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.81.3 1.6.54 2.36a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.72-1.72a2 2 0 0 1 2.11-.45c.76.24 1.55.42 2.36.54A2 2 0 0 1 22 16.92z"/></svg></div><h4>İletişim</h4><p>Bizimle iletişime geçin.</p></div>
+      <div class="step"><div class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div><h4>Araştırma ve Strateji</h4><p>İş hedeflerinize uygun yol haritası.</p></div>
+      <div class="step"><div class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20l9-5-9-5-9 5 9 5z"/><path d="M12 12V4l9 5"/></svg></div><h4>Markanızı Oluşturma</h4><p>Üretim planı, çekim ve kurgu.</p></div>
+      <div class="step"><div class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></div><h4>Hedefe Ulaşma</h4><p>Etkili dağıtım ve performans takibi.</p></div>
     </div>
   </section>
 
@@ -243,100 +208,79 @@
 </footer>
 
 <script>
-/* ========= LOGO GRID: otomatik yükleme + akıllı trim + ölçek ========= */
+/* ===================== LOGO GRID – Aranan mantık =====================
+   - 1,2,3… sırayla dene.
+   - n bulunamazsa, sadece (n+1)'e bak.
+   - (n+1) de bulunamazsa D U R.
+   - (n+1) bulunursa devam et.
+   - Her bulunan logo DOM'a ANINDA eklenir (progressive).
+====================================================================== */
 
 const grid = document.getElementById('logoGrid');
+const BASE = 'img/markalar/';
 const exts = ['png','jpg','jpeg','webp','svg'];
-const base = 'img/markalar/';
-const MAX_LOOKUP = 200;     // en çok 200 numaraya bak
-const MISS_LIMIT = 20;      // art arda 20 bulunamazsa dur
+const MAX_TRY = 200; // makul üst sınır
 
-function trySrc(n){
-  for(const e of exts){ const p = `${base}${n}.${e}`; if (fileExists(p)) return p; }
-  return null;
-}
-
-/* <img> yüklenebilir mi hızlı kontrol (async gerektirmeyen) */
-function fileExists(url){
-  const img = new Image();
-  img.src = url;
-  return img.complete || img.width+img.height>0; // çoğu sunucuda yeterli
-}
-
-/* Hücre oluştur */
-function addLogo(src){
-  const cell = document.createElement('div'); cell.className='logo-cell';
-  const img  = document.createElement('img'); img.className='logo-img'; img.decoding='async'; img.src=src; img.alt='Logo';
-  cell.appendChild(img); grid.appendChild(cell);
-
-  img.onload = ()=> {
-    smartTrimAndScale(img, cell);
-  };
-}
-
-/* Canvas üzerinde beyaz/şeffaf kenarları buda, sonra ölçekle */
-function smartTrimAndScale(img, cell){
-  try{
-    const w = img.naturalWidth, h = img.naturalHeight;
-    const canvas = document.createElement('canvas'), ctx = canvas.getContext('2d');
-    canvas.width = w; canvas.height = h; ctx.drawImage(img,0,0);
-    const data = ctx.getImageData(0,0,w,h).data;
-
-    const isContent = (i)=>{
-      const r=data[i], g=data[i+1], b=data[i+2], a=data[i+3];
-      if(a>8) { // şeffaf değil
-        const bright = (r+g+b)/3;
-        return !(a>250 && bright>245); // neredeyse saf beyazsa içerik sayma
-      }
-      return false;
-    };
-
-    let minX=w, minY=h, maxX=0, maxY=0, found=false;
-    for(let y=0;y<h;y++){
-      for(let x=0;x<w;x++){
-        const i=(y*w+x)*4;
-        if(isContent(i)){
-          if(x<minX)minX=x; if(y<minY)minY=y; if(x>maxX)maxX=x; if(y>maxY)maxY=y;
-          found=true;
-        }
-      }
-    }
-    if(found){
-      const pad = Math.round(Math.max(w,h)*0.03);
-      minX=Math.max(0,minX-pad); minY=Math.max(0,minY-pad);
-      maxX=Math.min(w,maxX+pad); maxY=Math.min(h,maxY+pad);
-      const tw=maxX-minX, th=maxY-minY;
-      const c2=document.createElement('canvas'); c2.width=tw; c2.height=th;
-      c2.getContext('2d').drawImage(canvas,minX,minY,tw,th,0,0,tw,th);
-      img.src = c2.toDataURL('image/png');
-    }
-  }catch(_e){
-    /* CORS veya SVG için budama atlanır */
-  }
-
-  // Görsel ölçeği: hedef hücre yüksekliğinin ~%70'i asgari olsun
-  requestAnimationFrame(()=>{
-    const cellH = cell.clientHeight;
-    const imgH  = img.naturalHeight || img.height;
-    if(!imgH) return;
-    let scale = (cellH*0.70) / imgH;
-    scale = Math.max(0.9, Math.min(scale, 1.8)); // 0.9x–1.8x aralığı
-    img.style.transform = `scale(${scale})`;
-    // genişlik/yükseklik sınırı yine dursun
-    img.style.maxHeight = '86px';
-    img.style.maxWidth  = '86%';
+// Kısa zaman aşımı olan minik bir "ping"
+function imgPing(url, timeout=900){
+  return new Promise(resolve=>{
+    const i=new Image();
+    const t=setTimeout(()=>{cleanup(); resolve(false);}, timeout);
+    function cleanup(){ i.onload=null; i.onerror=null; clearTimeout(t); }
+    i.onload=()=>{ cleanup(); resolve(true); };
+    i.onerror=()=>{ cleanup(); resolve(false); };
+    i.decoding='async'; i.loading='lazy';
+    i.src=url+'?v='+Math.random().toString(36).slice(2);
   });
 }
 
-/* Sırayla tara ve ekle */
-(function buildGrid(){
-  let miss=0;
-  for(let n=1;n<=MAX_LOOKUP;n++){
-    const src = trySrc(n);
-    if(src){ addLogo(src); miss=0; }
-    else { miss++; if(miss>=MISS_LIMIT) break; }
+// Belirli numara için tüm uzantıları sırayla dene
+async function findNumber(n){
+  for(const e of exts){
+    const url = `${BASE}${n}.${e}`;
+    if(await imgPing(url)) return url;
+  }
+  return null;
+}
+
+// Bulunan logoyu anında ekle + küçük olanı biraz büyüt
+function addLogo(src){
+  const cell=document.createElement('div'); cell.className='logo-cell';
+  const img=document.createElement('img'); img.className='logo-img'; img.src=src; img.alt='Logo'; img.loading='lazy';
+  cell.appendChild(img); grid.appendChild(cell);
+
+  img.addEventListener('load', ()=>{
+    // min okunabilirlik için hafif boost (1.0 - 1.8 arası)
+    const h = img.naturalHeight || img.height;
+    if(h){
+      let scale = Math.max(1, Math.min(1.8, 76 / h));
+      img.style.transform = `scale(${scale})`;
+    }
+  });
+}
+
+(async function buildLogos(){
+  let lastMissing = false;
+  for(let n=1; n<=MAX_TRY; n++){
+    const hit = await findNumber(n);
+    if(hit){
+      addLogo(hit);
+      lastMissing = false;            // bulundu → missing reset
+      continue;
+    }
+    // n bulunamadı → sadece n+1'e bak
+    const next = await findNumber(n+1);
+    if(next){
+      addLogo(next);
+      lastMissing = false;            // bulundu → devam
+      n = n+1;                        // döngü sayacını atlat
+      continue;
+    }
+    // n de yok, n+1 de yok → DUR
+    break;
   }
 })();
 </script>
 </body>
 </html>
+
