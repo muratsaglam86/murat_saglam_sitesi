@@ -28,12 +28,9 @@
     header{position:sticky;top:0;z-index:50;background:rgba(247,247,245,.85);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid #eee}
     .nav{display:flex;gap:18px;align-items:center;justify-content:space-between}
     .brand{font:700 16px "Libre Baskerville",serif;letter-spacing:.12em}
-
-    /* Logo (header) */
     .brand img{height:120px;width:auto;max-width:450px;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges}
-    @media (max-width:1000px){ .brand img{height:70px;max-width:260px} }
-    @media (max-width:640px){ .brand img{height:50px;max-width:180px} }
-
+    @media (max-width:1000px){.brand img{height:70px;max-width:260px}}
+    @media (max-width:640px){.brand img{height:50px;max-width:180px}}
     .links a{font-size:14px;text-decoration:none;color:#222;opacity:.8}
     .links{display:flex;gap:18px;align-items:center}
     .links a:hover{opacity:1}
@@ -72,17 +69,20 @@
     .step h4{margin:6px 0 6px;font-size:16px}
     .step p{margin:0;color:var(--muted);font-size:14px;word-break:break-word}
 
-    /* Clients grid */
+    /* Clients grid (koyu arkaplan + outline) */
     .logo-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
-    .logo-cell{height:84px;border-radius:14px;background:#fff;border:1px dashed #e5e7eb;display:grid;place-items:center}
-    .logo-img{max-height:48px;object-fit:contain;transform:scale(var(--boost,1));transition:transform .2s ease-out}
-
-    /* Modal */
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;place-items:center;z-index:80;padding:24px}
-    .modal.open{display:grid}
-    .player{width:min(100%,1100px)}
-    .player iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:12px;background:#000}
-    .close{position:absolute;top:16px;right:18px;width:42px;height:42px;border-radius:11px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.9);display:grid;place-items:center;font-size:22px;cursor:pointer}
+    .logo-cell{
+      height:84px;border-radius:14px;
+      background:#eef1f3;           /* daha koyu zemin */
+      border:1px dashed #d7dde3;
+      display:grid;place-items:center
+    }
+    .logo-img{
+      max-height:48px;object-fit:contain;
+      transform:scale(var(--boost,1));
+      transition:transform .25s ease-out, filter .2s ease-out;
+      filter: drop-shadow(0 0 1px rgba(0,0,0,.45)); /* beyaz logolar için kontrast */
+    }
 
     /* Footer */
     footer{margin-top:60px;border-top:1px solid #e5e7eb;background:#fff}
@@ -100,7 +100,7 @@
       .links{display:none}
       .cards{grid-template-columns:1fr}
       .gallery{grid-template-columns:1fr}
-      .steps{grid-template-columns:1fr} /* taşma düzeltmesi */
+      .steps{grid-template-columns:1fr}
       .step-icon{width:60px;height:60px}
       .player iframe{border-radius:10px}
     }
@@ -110,9 +110,7 @@
 
 <header>
   <div class="container nav">
-    <div class="brand">
-      <img src="img/logo.png" alt="Murat Sağlam Logo">
-    </div>
+    <div class="brand"><img src="img/logo.png" alt="Murat Sağlam Logo"></div>
     <div class="links">
       <a href="#services">Hizmetlerimiz</a>
       <a href="#portfolio">Portfolyo</a>
@@ -129,8 +127,8 @@
       <h1>Sosyal Medya Yönetimiyle Markanız Her Gün Sahnede</h1>
       <p>Drone çekimi, video prodüksiyon, ürün ve e-ticaret fotoğrafları, yemek fotoğrafçılığı, sosyal medya post ve video üretimi… Tüm içerik sürecini tek elde toplayıp sonuç odaklı yönetiyoruz.</p>
       <div class="actions">
-        <a class="btn" href="https://wa.me/905330565239" rel="noopener">Bize ulaşın</a>
-        <a class="btn secondary" href="/hizmetlerimiz.html">Hizmetlerimiz</a>
+        <a class="btn" href="https://wa.me/905330565239" target="_blank" rel="noopener">Bize ulaşın</a>
+        <a class="btn secondary" href="/hizmetler.html" rel="noopener">Hizmetlerimiz</a>
       </div>
     </div>
     <div class="hero-media hero-card">
@@ -179,28 +177,36 @@
     <div class="steps">
       <div class="step">
         <div class="step-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.81.3 1.6.54 2.36a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.72-1.72a2 2 0 0 1 2.11-.45c.76.24 1.55.42 2.36.54A2 2 0 0 1 22 16.92z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.81.3 1.6.54 2.36a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.72-1.72a2 2 0 0 1 2.11-.45c.76.24 1.55.42 2.36.54A2 2 0 0 1 22 16.92z"/>
+          </svg>
         </div>
         <h4>İletişim</h4>
         <p>Bizimle iletişime geçin.</p>
       </div>
       <div class="step">
         <div class="step-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+          </svg>
         </div>
         <h4>Araştırma ve Strateji</h4>
         <p>İş hedeflerinize uygun yol haritası.</p>
       </div>
       <div class="step">
         <div class="step-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20l9-5-9-5-9 5 9 5z"/><path d="M12 12V4l9 5"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 20l9-5-9-5-9 5 9 5z"/><path d="M12 12V4l9 5"/>
+          </svg>
         </div>
         <h4>Markanızı Oluşturma</h4>
         <p>Üretim planı, çekim ve kurgu.</p>
       </div>
       <div class="step">
         <div class="step-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 19V5"/><path d="M5 12l7-7 7 7"/>
+          </svg>
         </div>
         <h4>Hedefe Ulaşma</h4>
         <p>Etkili dağıtım ve performans takibi.</p>
@@ -223,14 +229,14 @@
       <div class="tile" data-yt="H7P-2b-h8ck"><div style="background-image:url('https://img.youtube.com/vi/H7P-2b-h8ck/hqdefault.jpg')"></div><div class="play"></div></div>
     </div>
     <div style="margin-top:14px">
-      <a class="btn secondary" href="/portfolyo.html">Daha fazla yükle</a>
+      <a class="btn secondary" href="/portfolyo.html" rel="noopener">Daha fazla yükle</a>
     </div>
   </section>
 
-  <!-- MÜŞTERİLERİMİZ -->
+  <!-- MÜŞTERİLERİMİZ – otomatik yükleme -->
   <section class="container">
     <h2>Müşterilerimiz</h2>
-    <div class="logo-grid" id="logoGrid"></div>
+    <div id="logoGrid" class="logo-grid"></div>
   </section>
 
   <!-- CONTACT -->
@@ -241,8 +247,8 @@
         <p style="margin:0;color:var(--muted)">WhatsApp veya e-posta ile hemen ulaşın; ihtiyacınıza uygun planı birlikte çıkaralım.</p>
       </div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <a class="btn" href="https://wa.me/905330565239" rel="noopener">WhatsApp</a>
-        <a class="btn secondary" href="mailto:muratsaglam@hotmail.com.tr" rel="noopener">Mail</a>
+        <a class="btn" href="https://wa.me/905330565239" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn secondary" href="mailto:muratsaglam@hotmail.com.tr" target="_blank" rel="noopener">Mail</a>
         <a class="btn secondary" href="tel:+905330565239">Telefon</a>
       </div>
     </div>
@@ -253,8 +259,8 @@
   <div class="container footer">
     <div>© 2025 Murat Sağlam</div>
     <div class="right">
-      <a class="btn secondary" href="https://wa.me/905330565239" rel="noopener">WhatsApp</a>
-      <a class="btn secondary" href="mailto:muratsaglam@hotmail.com.tr" rel="noopener">Mail</a>
+      <a class="btn secondary" href="https://wa.me/905330565239" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn secondary" href="mailto:muratsaglam@hotmail.com.tr" target="_blank" rel="noopener">Mail</a>
     </div>
   </div>
 </footer>
@@ -266,7 +272,7 @@
 </div>
 
 <script>
-  /* ===== YouTube modal ===== */
+  /* Video modal */
   const tiles=[...document.querySelectorAll('.tile')];
   const modal=document.getElementById('ytModal');
   const frame=document.getElementById('ytFrame');
@@ -284,26 +290,35 @@
 </script>
 
 <script>
-  /* ===== Cache-busting (asset’lere v paramı ekler) ===== */
-  const V='2025-09-01-2';
-  function bust(sel,attr){
+  /* ==== CACHE-BUSTING (yerel assetler için) ==== */
+  const V = '20250901-1';
+  function bust(sel, attr){
     document.querySelectorAll(sel).forEach(el=>{
-      const url=el.getAttribute(attr); if(!url) return;
-      if(url.startsWith('img/')||url.startsWith('css/')||url.startsWith('js/')){
-        const u=new URL(url,location.origin); u.searchParams.set('v',V);
-        el.setAttribute(attr,u.pathname+u.search);
+      const url = el.getAttribute(attr); if(!url) return;
+      if(url.startsWith('img/') || url.startsWith('css/') || url.startsWith('js/')){
+        const u = new URL(url, location.origin);
+        u.searchParams.set('v', V);
+        el.setAttribute(attr, u.pathname + u.search);
       }
     });
   }
-  bust('img','src'); bust('link[rel="stylesheet"]','href'); bust('script[src]','src');
+  bust('img','src');
+  bust('link[rel="stylesheet"]','href');
+  bust('script[src]','src');
+
+  // Portfolyo & Hizmetler linkleri aynı sekmede, ama cache’e takılmasın
+  document.querySelectorAll('a[href="/portfolyo.html"], a[href="/hizmetler.html"]').forEach(a=>{
+    const u = new URL(a.getAttribute('href'), location.origin);
+    u.searchParams.set('v', V);
+    a.setAttribute('href', u.pathname + u.search);
+  });
 </script>
 
 <script>
-/* ====== LOGO GRID AUTO-LOADER + AKILLI ÖLÇEK ======
+/* ====== LOGO GRID AUTO-LOADER + İÇERİK TABANLI ÖLÇEK ======
    - Klasör: img/markalar/
-   - İsim:   1.jpg / 2.png / 3.webp ... (karışık uzantı olur)
-   - Otomatik sayar, bulduklarını ekler; 10 peş peşe bulunamazsa durur.
-   - Küçük görünenler için otomatik boost; ayrıca manuel boost tablosu var.
+   - Dosya adları: 1.jpg / 2.png / 3.webp ...
+   - Boşluk oranı yüksek logoları 1.60x’e kadar büyütür.
 */
 (function(){
   const grid = document.getElementById('logoGrid');
@@ -314,13 +329,10 @@
   const maxIndex = 300;
   const maxMissInRow = 10;
 
-  // İstersen numaraya göre elle boost ver (örn. {'13':1.35,'17':1.3})
-  const manualBoost = {
-    // '13': 1.35,
-    // '17': 1.30
-  };
+  // İstersen tekil ayar: {'13':1.45, '21':1.3}
+  const manualBoost = {};
 
-  let misses = 0, found = 0, idx = 1;
+  let misses = 0;
 
   function addLogo(src, num){
     const cell = document.createElement('div');
@@ -328,27 +340,61 @@
     const img = document.createElement('img');
     img.className='logo-img';
     img.alt = `Logo ${num}`;
-    img.loading='lazy';
-    img.decoding='async';
+    img.loading='lazy'; img.decoding='async';
     img.src = src;
 
-    img.addEventListener('load',()=>{
-      // Heuristik: çok kare/çok dik görüntüler + yüksek çözünürlük -> boost
-      const w = img.naturalWidth, h = img.naturalHeight;
-      let boost = 1;
-      const ar = w/h;
+    img.addEventListener('load', ()=>{
+      try {
+        let boost = 1;
 
-      if (manualBoost[num]) {
-        boost = manualBoost[num];
-      } else {
-        // kareye yakın & büyük dosyalar (genelde etrafı boşluklu logo) → büyüt
-        if (ar>0.8 && ar<1.25 && Math.max(w,h) >= 800) boost = 1.28;
-        // yatay/ dik aşırı oranlarda da biraz büyüt
-        if ((ar>=1.8 && w>=1200) || (ar<=0.55 && h>=1200)) boost = Math.max(boost,1.22);
-        // yine de çok ufak görünüyorsa min boost
-        if (Math.max(w,h) >= 1200) boost = Math.max(boost,1.18);
+        if (manualBoost[num]) {
+          boost = manualBoost[num];
+        } else {
+          const w = img.naturalWidth, h = img.naturalHeight;
+
+          if (Math.max(w,h) < 400) {
+            boost = 1.25;
+          } else {
+            const canvas = document.createElement('canvas');
+            canvas.width = w; canvas.height = h;
+            const ctx = canvas.getContext('2d', { willReadFrequently: true });
+            ctx.drawImage(img, 0, 0, w, h);
+
+            const step = Math.max(2, Math.floor(Math.min(w,h) / 300));
+            const data = ctx.getImageData(0,0,w,h).data;
+
+            let minX = w, minY = h, maxX = 0, maxY = 0, found = false;
+            for (let y=0; y<h; y+=step){
+              const row = y*w*4;
+              for (let x=0; x<w; x+=step){
+                const i = row + x*4;
+                if (data[i+3] > 10){
+                  found = true;
+                  if (x<minX) minX = x;
+                  if (y<minY) minY = y;
+                  if (x>maxX) maxX = x;
+                  if (y>maxY) maxY = y;
+                }
+              }
+            }
+            if (found){
+              const frac = Math.max((maxX-minX+1)/w, (maxY-minY+1)/h);
+              const mapped = 1 + Math.max(0, (1 - Math.min(frac,1)) * 0.75);
+              boost = Math.min(1.60, Math.max(1.0, mapped));
+
+              const ar = w/h;
+              if (ar>0.85 && ar<1.15 && Math.max(w,h)>=1200){
+                boost = Math.min(1.60, Math.max(boost, 1.35));
+              }
+            } else {
+              boost = 1.28;
+            }
+          }
+        }
+        img.style.setProperty('--boost', boost.toFixed(2));
+      } catch(e){
+        img.style.setProperty('--boost', '1.28');
       }
-      img.style.setProperty('--boost', boost);
     });
 
     cell.appendChild(img);
@@ -356,37 +402,25 @@
   }
 
   function tryNext(n){
-    // sıralı uzantı dene (image preload ile)
-    let tried = 0;
     let done = false;
-
     function tryExt(i){
-      if (i>=exts.length){ if(!done) miss(); return; }
+      if (i>=exts.length){ miss(); return; }
       const url = `${base}${n}${exts[i]}`;
-      const test = new Image();
-      test.onload = ()=>{ if(done) return; done=true; hit(url); };
-      test.onerror= ()=>{ tryExt(i+1); };
-      // hız için decode isteme, sadece var mı yok mu
-      test.src = url + `?v=${Date.now()}`;
+      const probe = new Image();
+      probe.onload = ()=>{ if(done) return; done=true; hit(url); };
+      probe.onerror= ()=>{ tryExt(i+1); };
+      probe.src = url + `?v=${Date.now()}`; // cache bypass
     }
-
-    function hit(url){
-      misses=0; found++; addLogo(url, String(n));
-      // sıradaki
-      schedule(n+1);
-    }
-    function miss(){
-      misses++;
-      if (misses>=maxMissInRow || n>maxIndex) return; // dur
-      schedule(n+1);
-    }
+    function hit(url){ misses=0; addLogo(url, String(n)); schedule(n+1); }
+    function miss(){ misses++; if (misses>=maxMissInRow || n>=maxIndex) return; schedule(n+1); }
     tryExt(0);
   }
 
-  function schedule(n){ requestIdleCallback? requestIdleCallback(()=>tryNext(n)): setTimeout(()=>tryNext(n),0); }
+  function schedule(n){
+    (window.requestIdleCallback || window.setTimeout)(()=>tryNext(n), 0);
+  }
 
-  // başlat
-  schedule(idx);
+  schedule(1);
 })();
 </script>
 
