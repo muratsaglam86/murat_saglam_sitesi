@@ -1,130 +1,131 @@
 <!doctype html>
 <html lang="tr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Murat Sağlam – Sosyal Medya ve Prodüksiyon</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#f7f7f5; --text:#111; --muted:#6b7280;
-    --accent:#1e7f62; --accent-2:#e6f3ee;
-    --card:#ffffff; --shadow:0 10px 30px rgba(0,0,0,.06);
-    --radius:16px; --gap:24px;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;line-height:1.6;overflow-x:hidden}
-  img{max-width:100%;display:block}
-  a{color:inherit}
-  .container{max-width:1200px;margin-inline:auto;padding:24px}
-  .pill{display:inline-block;background:var(--accent-2);color:var(--accent);padding:8px 14px;border-radius:999px;font-weight:600}
-  .btn{display:inline-block;background:var(--accent);color:#fff;padding:14px 20px;border-radius:12px;font-weight:700;text-decoration:none;box-shadow:var(--shadow)}
-  .btn.secondary{background:#fff;color:var(--text);border:1px solid #e5e7eb}
-  h1,h2{font-family:"Libre Baskerville",serif;line-height:1.15}
-  h1{font-size:clamp(28px,5vw,54px);margin:8px 0 16px}
-  h2{font-size:clamp(22px,3.2vw,36px);margin:0 0 14px}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Murat Sağlam – Sosyal Medya ve Prodüksiyon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f7f7f5; --text:#111; --muted:#6b7280;
+      --accent:#1e7f62; --accent-2:#e6f3ee;
+      --card:#ffffff; --shadow:0 10px 30px rgba(0,0,0,.06);
+      --radius:16px; --gap:24px;
+      --logoCell:#e7eaed; /* daha koyu grid zemini */
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;line-height:1.6;overflow-x:hidden}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1200px;margin-inline:auto;padding:24px}
+    .pill{display:inline-block;background:var(--accent-2);color:var(--accent);padding:8px 14px;border-radius:999px;font-weight:600}
+    .btn{display:inline-block;background:var(--accent);color:#fff;padding:14px 20px;border-radius:12px;font-weight:700;box-shadow:var(--shadow)}
+    .btn.secondary{background:#fff;color:var(--text);border:1px solid #e5e7eb}
+    h1,h2{font-family:"Libre Baskerville",serif;line-height:1.15}
+    h1{font-size:clamp(28px,5vw,54px);margin:8px 0 16px}
+    h2{font-size:clamp(22px,3.2vw,36px);margin:0 0 14px}
 
-  /* Header */
-  header{position:sticky;top:0;z-index:50;background:rgba(247,247,245,.85);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid #eee}
-  .nav{display:flex;gap:18px;align-items:center;justify-content:space-between}
-  .brand img{height:56px;width:auto;image-rendering:-webkit-optimize-contrast}
-  @media (max-width:1000px){ .brand img{height:48px} }
-  @media (max-width:640px){ .brand img{height:42px} }
-  .links{display:flex;gap:18px;align-items:center}
-  .links a{font-size:14px;text-decoration:none;color:#222;opacity:.8}
-  .links a:hover{opacity:1}
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(247,247,245,.85);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid #eee}
+    .nav{display:flex;gap:18px;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:50px;width:auto}
+    .links{display:flex;gap:18px;align-items:center}
+    .links a{font-size:14px;opacity:.85}
+    .links a:hover{opacity:1}
 
-  /* Hero */
-  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--gap);align-items:center;padding-top:18px}
-  .hero-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
-  .hero-media{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
-  .hero-media img{aspect-ratio:16/10;object-fit:cover}
-  .hero p{color:var(--muted);font-size:18px}
-  .hero .actions{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--gap);align-items:center;padding-top:18px}
+    .hero-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+    .hero-media{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+    .hero-media img{aspect-ratio:16/10;object-fit:cover}
+    .hero p{color:var(--muted);font-size:18px}
+    .hero .actions{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
 
-  /* Services */
-  .services{margin-top:40px}
-  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
-  .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
-  .card img{aspect-ratio:16/10;object-fit:cover}
-  .card .body{padding:18px}
-  .card h3{margin:0 0 6px;font-size:18px}
-  .card p{color:var(--muted);font-size:14px;margin:0}
+    /* Services */
+    .services{margin-top:40px}
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+    .card img{aspect-ratio:16/10;object-fit:cover}
+    .card .body{padding:18px}
+    .card h3{margin:0 0 6px;font-size:18px}
+    .card p{color:var(--muted);font-size:14px;margin:0}
 
-  /* Portfolio preview */
-  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
-  .tile{position:relative;border-radius:14px;overflow:hidden;background:#ddd;box-shadow:var(--shadow);cursor:pointer}
-  .tile > div{background-size:cover;background-position:center;aspect-ratio:16/9;transform:scale(1.01);transition:transform .2s}
-  .tile:hover > div{transform:scale(1.04)}
-  .play{position:absolute;right:10px;bottom:10px;width:46px;height:46px;border-radius:10px;background:#fff9;border:1px solid #e5e7eb}
-  .play:before{content:'';position:absolute;left:18px;top:14px;border-left:12px solid #111;border-top:9px solid transparent;border-bottom:9px solid transparent}
+    /* Portfolio preview */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+    .tile{position:relative;border-radius:14px;overflow:hidden;background:#ddd;box-shadow:var(--shadow);cursor:pointer}
+    .tile > div{background-size:cover;background-position:center;aspect-ratio:16/9;transform:scale(1.01);transition:transform .2s}
+    .tile:hover > div{transform:scale(1.04)}
+    .play{position:absolute;right:10px;bottom:10px;width:46px;height:46px;border-radius:10px;background:#fff9;border:1px solid #e5e7eb}
+    .play:before{content:'';position:absolute;left:18px;top:14px;border-left:12px solid #111;border-top:9px solid transparent;border-bottom:9px solid transparent}
 
-  /* Başvuru Adımları */
-  .steps-wrap{margin-top:40px}
-  .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap)}
-  .step{min-width:0;background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center}
-  .step-icon{width:72px;height:72px;border-radius:999px;border:2px solid #f4e2d0;display:grid;place-items:center;margin-bottom:12px;flex:0 0 auto}
-  .step-icon svg{width:34px;height:34px;color:#111}
-  .step h4{margin:6px 0 6px;font-size:16px}
-  .step p{margin:0;color:var(--muted);font-size:14px;word-break:break-word}
+    /* Steps */
+    .steps-wrap{margin-top:40px}
+    .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap)}
+    .step{min-width:0;background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center}
+    .step-icon{width:72px;height:72px;border-radius:999px;border:2px solid #f4e2d0;display:grid;place-items:center;margin-bottom:12px;flex:0 0 auto}
+    .step-icon svg{width:34px;height:34px;color:#111}
+    .step h4{margin:6px 0 6px;font-size:16px}
+    .step p{margin:0;color:var(--muted);font-size:14px;word-break:break-word}
 
-  /* Clients grid */
-  .logo-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
-  .logo-cell{
-    position:relative; height:112px; border-radius:14px;
-    background:#eceff1; /* daha koyu taban */
-    border:1px dashed #e0e3e6; display:grid; place-items:center;
-    box-shadow: inset 0 0 0 1px rgba(0,0,0,.03);
-  }
-  /* beyaz logolar okunaklı olsun diye koyu overlay */
-  .logo-cell::before{
-    content:""; position:absolute; inset:0; border-radius:inherit;
-    background: radial-gradient(80% 80% at 50% 50%, rgba(0,0,0,.10), rgba(0,0,0,.14));
-    pointer-events:none; mix-blend-multiply;
-  }
-  .logo-img{
-    max-height:62px; object-fit:contain;
-    filter: drop-shadow(0 1px 0 rgba(0,0,0,.12)); /* hafif kontur etkisi */
-    transform-origin:center center; transition:transform .2s ease;
-  }
+    /* Clients grid */
+    .logo-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+    .logo-cell{
+      height:92px;border-radius:14px;
+      background:linear-gradient(180deg,#eef1f3, #e3e6ea); /* okunurluk için koyu */
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.05);
+      display:grid;place-items:center;position:relative;overflow:hidden;
+    }
+    /* iç kenara hafif vignette – beyaz logoları öne çıkarır */
+    .logo-cell:before{
+      content:"";position:absolute;inset:0;border-radius:14px;
+      box-shadow: inset 0 0 30px rgba(0,0,0,.06);
+      pointer-events:none;
+    }
+    .logo-img{
+      max-width:none; /* JS ile ölçekleyeceğiz */
+      transform-origin:center center;
+      image-rendering:-webkit-optimize-contrast;
+      filter: drop-shadow(0 0 0.5px rgba(0,0,0,.3)); /* beyaz logolara hafif kontur */
+    }
 
-  /* Modal – sadece open iken göster (en alttaki ufak kutu sorununu çözer) */
-  .modal{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none !important;place-items:center;z-index:80;padding:24px}
-  .modal.open{display:grid !important}
-  .player{width:min(100%,1100px)}
-  .player iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:12px;background:#000}
-  .close{position:absolute;top:16px;right:18px;width:42px;height:42px;border-radius:11px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.9);display:grid;place-items:center;font-size:22px;cursor:pointer}
+    /* Modal */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;place-items:center;z-index:80;padding:24px}
+    .modal.open{display:grid}
+    .player{width:min(100%,1100px)}
+    .player iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:12px;background:#000}
+    .close{position:absolute;top:16px;right:18px;width:42px;height:42px;border-radius:11px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.9);display:grid;place-items:center;font-size:22px;cursor:pointer}
 
-  /* Footer */
-  footer{margin-top:60px;border-top:1px solid #e5e7eb;background:#fff}
-  .footer{display:flex;justify-content:space-between;align-items:center;gap:12px}
-  .footer .right{display:flex;gap:10px;align-items:center}
+    /* Footer */
+    footer{margin-top:60px;border-top:1px solid #e5e7eb;background:#fff}
+    .footer{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .footer .right{display:flex;gap:14px;align-items:center}
+    .ig{width:26px;height:26px;display:inline-block}
 
-  /* Responsive */
-  @media (max-width:1000px){
-    .hero{grid-template-columns:1fr}
-    .cards{grid-template-columns:repeat(2,1fr)}
-    .gallery{grid-template-columns:repeat(2,1fr)}
-    .logo-grid{grid-template-columns:repeat(4,1fr)}
-  }
-  @media (max-width:640px){
-    .links{display:none}
-    .cards{grid-template-columns:1fr}
-    .gallery{grid-template-columns:1fr}
-    .steps{grid-template-columns:1fr}
-    .step-icon{width:60px;height:60px}
-    .player iframe{border-radius:10px}
-    .logo-grid{grid-template-columns:repeat(3,1fr)}
-    .logo-cell{height:100px}
-    .logo-img{max-height:56px}
-  }
-</style>
+    /* Responsive */
+    @media (max-width:1000px){
+      .hero{grid-template-columns:1fr}
+      .cards{grid-template-columns:repeat(2,1fr)}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      .logo-grid{grid-template-columns:repeat(4,1fr)}
+    }
+    @media (max-width:640px){
+      .links{display:none}
+      .cards{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr}
+      .step-icon{width:60px;height:60px}
+      .player iframe{border-radius:10px}
+    }
+  </style>
 </head>
 <body>
 
 <header>
   <div class="container nav">
-    <div class="brand"><img src="img/logo.png" alt="Murat Sağlam Logo"></div>
+    <div class="brand">
+      <img src="img/logo.png" alt="Murat Sağlam Logo">
+    </div>
     <div class="links">
       <a href="#services">Hizmetlerimiz</a>
       <a href="#portfolio">Portfolyo</a>
@@ -173,60 +174,45 @@
     </div>
   </section>
 
-  <!-- BAŞVURU ADIMLARI -->
+  <!-- STEPS -->
   <section class="container steps-wrap" aria-labelledby="steps-title">
     <h2 id="steps-title">Başvuru Adımları</h2>
     <div class="steps">
-      <div class="step">
-        <div class="step-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.81.3 1.6.54 2.36a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.72-1.72a2 2 0 0 1 2.11-.45c.76.24 1.55.42 2.36.54A2 2 0 0 1 22 16.92z"/></svg>
-        </div>
-        <h4>İletişim</h4><p>Bizimle iletişime geçin.</p>
-      </div>
-      <div class="step">
-        <div class="step-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        </div>
-        <h4>Araştırma ve Strateji</h4><p>İş hedeflerinize uygun yol haritası.</p>
-      </div>
-      <div class="step">
-        <div class="step-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20l9-5-9-5-9 5 9 5z"/><path d="M12 12V4l9 5"/></svg>
-        </div>
-        <h4>Markanızı Oluşturma</h4><p>Üretim planı, çekim ve kurgu.</p>
-      </div>
-      <div class="step">
-        <div class="step-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
-        </div>
-        <h4>Hedefe Ulaşma</h4><p>Etkili dağıtım ve performans takibi.</p>
-      </div>
+      <div class="step"><div class="step-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.19 18a19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.81.3 1.6.54 2.36a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.72-1.72a2 2 0 0 1 2.11-.45c.76.24 1.55.42 2.36.54A2 2 0 0 1 22 16.92z"/></svg>
+      </div><h4>İletişim</h4><p>Bizimle iletişime geçin.</p></div>
+      <div class="step"><div class="step-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      </div><h4>Araştırma ve Strateji</h4><p>İş hedeflerinize uygun yol haritası.</p></div>
+      <div class="step"><div class="step-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20l9-5-9-5-9 5 9 5z"/><path d="M12 12V4l9 5"/></svg>
+      </div><h4>Markanızı Oluşturma</h4><p>Üretim planı, çekim ve kurgu.</p></div>
+      <div class="step"><div class="step-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+      </div><h4>Hedefe Ulaşma</h4><p>Etkili dağıtım ve performans takibi.</p></div>
     </div>
   </section>
 
-  <!-- PORTFOLYO (9'lu, modal) -->
+  <!-- PORTFOLYO -->
   <section id="portfolio" class="container" aria-labelledby="portfolio-title">
     <h2 id="portfolio-title">Portfolyo</h2>
     <div class="gallery">
-      <div class="tile" data-yt="Zyg7MDfWq5E"><div style="background-image:url('https://img.youtube.com/vi/Zyg7MDfWq5E/hqdefault.jpg')"></div><div class="play"></div></div>
-      <div class="tile" data-yt="wdOPHrBY5nk"><div style="background-image:url('https://img.youtube.com/vi/wdOPHrBY5nk/hqdefault.jpg')"></div><div class="play"></div></div>
-      <div class="tile" data-yt="6UuATYbb9Jc"><div style="background-image:url('https://img.youtube.com/vi/6UuATYbb9Jc/hqdefault.jpg')"></div><div class="play"></div></div>
-      <div class="tile" data-yt="TESkojTeJjU"><div style="background-image:url('https://img.youtube.com/vi/TESkojTeJjU/hqdefault.jpg')"></div><div class="play"></div></div>
-      <div class="tile" data-yt="07KNjFUUpGU"><div style="background-image:url('https://img.youtube.com/vi/07KNjFUUpGU/hqdefault.jpg')"></div><div class="play"></div></div>
-      <div class="tile" data-yt="0BwcYtM6Seg"><div style="background-image:url('https://img.youtube.com/vi/0BwcYtM6Seg/hqdefault.jpg')"></div><div class="play"></div></div>
-      <div class="tile" data-yt="MG9IgTMh-0E"><div style="background-image:url('https://img.youtube.com/vi/MG9IgTMh-0E/hqdefault.jpg')"></div><div class="play"></div></div>
-      <div class="tile" data-yt="LlKQl6tfUzM"><div style="background-image:url('https://img.youtube.com/vi/LlKQl6tfUzM/hqdefault.jpg')"></div><div class="play"></div></div>
-      <div class="tile" data-yt="H7P-2b-h8ck"><div style="background-image:url('https://img.youtube.com/vi/H7P-2b-h8ck/hqdefault.jpg')"></div><div class="play"></div></div>
-    </div>
-    <div style="margin-top:14px">
-      <a class="btn secondary" href="/portfolyo.html">Daha fazla yükle</a>
+      <a class="tile" href="/portfolyo.html"><div style="background-image:url('https://img.youtube.com/vi/Zyg7MDfWq5E/hqdefault.jpg')"></div><div class="play"></div></a>
+      <a class="tile" href="/portfolyo.html"><div style="background-image:url('https://img.youtube.com/vi/wdOPHrBY5nk/hqdefault.jpg')"></div><div class="play"></div></a>
+      <a class="tile" href="/portfolyo.html"><div style="background-image:url('https://img.youtube.com/vi/6UuATYbb9Jc/hqdefault.jpg')"></div><div class="play"></div></a>
+      <a class="tile" href="/portfolyo.html"><div style="background-image:url('https://img.youtube.com/vi/TESkojTeJjU/hqdefault.jpg')"></div><div class="play"></div></a>
+      <a class="tile" href="/portfolyo.html"><div style="background-image:url('https://img.youtube.com/vi/07KNjFUUpGU/hqdefault.jpg')"></div><div class="play"></div></a>
+      <a class="tile" href="/portfolyo.html"><div style="background-image:url('https://img.youtube.com/vi/0BwcYtM6Seg/hqdefault.jpg')"></div><div class="play"></div></a>
+      <a class="tile" href="/portfolyo.html"><div style="background-image:url('https://img.youtube.com/vi/MG9IgTMh-0E/hqdefault.jpg')"></div><div class="play"></div></a>
+      <a class="tile" href="/portfolyo.html"><div style="background-image:url('https://img.youtube.com/vi/LlKQl6tfUzM/hqdefault.jpg')"></div><div class="play"></div></a>
+      <a class="tile" href="/portfolyo.html"><div style="background-image:url('https://img.youtube.com/vi/H7P-2b-h8ck/hqdefault.jpg')"></div><div class="play"></div></a>
     </div>
   </section>
 
-  <!-- MÜŞTERİLERİMİZ (otomatik) -->
+  <!-- MÜŞTERİLERİMİZ -->
   <section class="container">
     <h2>Müşterilerimiz</h2>
-    <div id="logoGrid" class="logo-grid" aria-live="polite"></div>
+    <div id="logoGrid" class="logo-grid"></div>
   </section>
 
   <!-- CONTACT -->
@@ -234,11 +220,11 @@
     <div class="hero-card" style="display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px 24px">
       <div>
         <h2>Bugün iletişime geçin</h2>
-        <p style="margin:0;color:var(--muted)">WhatsApp veya e-posta ile hemen ulaşın; ihtiyacınıza uygun planı birlikte çıkaralım.</p>
+        <p style="margin:0;color:var(--muted)">WhatsApp veya e-posta ile hemen ulaşın; ihtiyaca uygun planı birlikte çıkaralım.</p>
       </div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
         <a class="btn" href="https://wa.me/905330565239" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="btn secondary" href="mailto:muratsaglam@hotmail.com.tr">Mail</a>
+        <a class="btn secondary" href="mailto:muratsaglam@hotmail.com.tr" target="_blank" rel="noopener">Mail</a>
         <a class="btn secondary" href="tel:+905330565239">Telefon</a>
       </div>
     </div>
@@ -249,80 +235,107 @@
   <div class="container footer">
     <div>© 2025 Murat Sağlam</div>
     <div class="right">
-      <a href="https://www.instagram.com/muratsaglamco" target="_blank" rel="noopener" aria-label="Instagram">
-        <img src="img/instagram.svg" alt="Instagram" style="width:24px;height:24px;">
+      <a href="https://www.instagram.com/muratsaglamco" class="ig" aria-label="Instagram" target="_blank" rel="noopener">
+        <img src="img/instagram.svg" alt="" class="ig">
       </a>
     </div>
   </div>
 </footer>
 
-<!-- Modal Player -->
-<div class="modal" id="ytModal" aria-hidden="true">
-  <div class="player"><iframe id="ytFrame" src="" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
-  <button class="close" id="closeModal" aria-label="Kapat">×</button>
-</div>
-
 <script>
-/* ================== Video modal ================== */
-const tiles=[...document.querySelectorAll('.tile')];
-const modal=document.getElementById('ytModal');
-const frame=document.getElementById('ytFrame');
-const closeBtn=document.getElementById('closeModal');
-function openYT(id){ frame.src=`https://www.youtube.com/embed/${id}?autoplay=1&rel=0&playsinline=1`; modal.classList.add('open'); document.body.style.overflow='hidden'; }
-function closeYT(){ frame.src=''; modal.classList.remove('open'); document.body.style.overflow=''; }
-tiles.forEach(t=>t.addEventListener('click',()=>openYT(t.dataset.yt)));
-closeBtn.addEventListener('click',closeYT);
-modal.addEventListener('click',e=>{ if(e.target===modal) closeYT(); });
+/* ========= LOGO GRID: otomatik yükleme + akıllı trim + ölçek ========= */
 
-/* ============== Markalar (otomatik yükleme) ============== */
-/* img/markalar/1.(jpg|jpeg|png|webp|svg) ... sırayla ekler. */
-(function loadLogos(){
-  const grid = document.getElementById('logoGrid');
-  const exts = ['png','webp','jpg','jpeg','svg'];
-  const MAX = 80; // güvenli üst sınır
-  let index = 1, foundAny=false;
+const grid = document.getElementById('logoGrid');
+const exts = ['png','jpg','jpeg','webp','svg'];
+const base = 'img/markalar/';
+const MAX_LOOKUP = 200;     // en çok 200 numaraya bak
+const MISS_LIMIT = 20;      // art arda 20 bulunamazsa dur
 
-  function tryNext(){
-    if(index>MAX){ if(!foundAny){ grid.innerHTML='<p style="color:var(--muted)">Şimdilik logo eklenmedi.</p>'; } return; }
-    let tried = 0, loaded=false;
+function trySrc(n){
+  for(const e of exts){ const p = `${base}${n}.${e}`; if (fileExists(p)) return p; }
+  return null;
+}
 
-    function tryExt(){
-      if(tried>=exts.length){ index++; tryNext(); return; }
-      const src = `img/markalar/${index}.${exts[tried++]}`;
-      const testImg = new Image();
-      testImg.onload = ()=>{ foundAny=true; appendLogo(src); index++; tryNext(); };
-      testImg.onerror = tryExt;
-      testImg.src = src + `?v=${Date.now()}`; // cache-bust
+/* <img> yüklenebilir mi hızlı kontrol (async gerektirmeyen) */
+function fileExists(url){
+  const img = new Image();
+  img.src = url;
+  return img.complete || img.width+img.height>0; // çoğu sunucuda yeterli
+}
+
+/* Hücre oluştur */
+function addLogo(src){
+  const cell = document.createElement('div'); cell.className='logo-cell';
+  const img  = document.createElement('img'); img.className='logo-img'; img.decoding='async'; img.src=src; img.alt='Logo';
+  cell.appendChild(img); grid.appendChild(cell);
+
+  img.onload = ()=> {
+    smartTrimAndScale(img, cell);
+  };
+}
+
+/* Canvas üzerinde beyaz/şeffaf kenarları buda, sonra ölçekle */
+function smartTrimAndScale(img, cell){
+  try{
+    const w = img.naturalWidth, h = img.naturalHeight;
+    const canvas = document.createElement('canvas'), ctx = canvas.getContext('2d');
+    canvas.width = w; canvas.height = h; ctx.drawImage(img,0,0);
+    const data = ctx.getImageData(0,0,w,h).data;
+
+    const isContent = (i)=>{
+      const r=data[i], g=data[i+1], b=data[i+2], a=data[i+3];
+      if(a>8) { // şeffaf değil
+        const bright = (r+g+b)/3;
+        return !(a>250 && bright>245); // neredeyse saf beyazsa içerik sayma
+      }
+      return false;
+    };
+
+    let minX=w, minY=h, maxX=0, maxY=0, found=false;
+    for(let y=0;y<h;y++){
+      for(let x=0;x<w;x++){
+        const i=(y*w+x)*4;
+        if(isContent(i)){
+          if(x<minX)minX=x; if(y<minY)minY=y; if(x>maxX)maxX=x; if(y>maxY)maxY=y;
+          found=true;
+        }
+      }
     }
-    tryExt();
+    if(found){
+      const pad = Math.round(Math.max(w,h)*0.03);
+      minX=Math.max(0,minX-pad); minY=Math.max(0,minY-pad);
+      maxX=Math.min(w,maxX+pad); maxY=Math.min(h,maxY+pad);
+      const tw=maxX-minX, th=maxY-minY;
+      const c2=document.createElement('canvas'); c2.width=tw; c2.height=th;
+      c2.getContext('2d').drawImage(canvas,minX,minY,tw,th,0,0,tw,th);
+      img.src = c2.toDataURL('image/png');
+    }
+  }catch(_e){
+    /* CORS veya SVG için budama atlanır */
   }
 
-  function appendLogo(src){
-    const cell = document.createElement('div');
-    cell.className = 'logo-cell';
-    const img = document.createElement('img');
-    img.className = 'logo-img';
-    img.alt = 'Müşteri logosu';
-    img.src = src + `?v=${Date.now()}`;
-    cell.appendChild(img);
-    grid.appendChild(cell);
-
-    img.addEventListener('load', ()=> boostSmall(img, cell));
-    window.addEventListener('resize', ()=> boostSmall(img, cell));
-  }
-
-  // Küçük logolara akıllı ölçekleme
-  function boostSmall(img, cell){
-    const ch = cell.clientHeight;
-    const r = img.getBoundingClientRect();
-    const ratio = r.height / ch;         // 0..1 aralığı (ne kadar yer kaplıyor)
-    const target = 0.68;                 // hedef doluluk (yükseklik)
-    let scale = target / Math.max(ratio, 0.01);
-    scale = Math.min(Math.max(scale, 1.0), 1.8);  // 1.0–1.8 arası
+  // Görsel ölçeği: hedef hücre yüksekliğinin ~%70'i asgari olsun
+  requestAnimationFrame(()=>{
+    const cellH = cell.clientHeight;
+    const imgH  = img.naturalHeight || img.height;
+    if(!imgH) return;
+    let scale = (cellH*0.70) / imgH;
+    scale = Math.max(0.9, Math.min(scale, 1.8)); // 0.9x–1.8x aralığı
     img.style.transform = `scale(${scale})`;
-  }
+    // genişlik/yükseklik sınırı yine dursun
+    img.style.maxHeight = '86px';
+    img.style.maxWidth  = '86%';
+  });
+}
 
-  tryNext();
+/* Sırayla tara ve ekle */
+(function buildGrid(){
+  let miss=0;
+  for(let n=1;n<=MAX_LOOKUP;n++){
+    const src = trySrc(n);
+    if(src){ addLogo(src); miss=0; }
+    else { miss++; if(miss>=MISS_LIMIT) break; }
+  }
 })();
 </script>
 </body>
