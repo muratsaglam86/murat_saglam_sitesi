@@ -4,233 +4,203 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hizmetlerimiz – Murat Sağlam</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
-    /* Renk Paleti */
+    /* Renk ve Stil Paleti */
     :root {
-      --bg-color: #f7f7f5;
-      --text-color: #1a1a1a;
-      --muted-color: #6b7280;
-      --accent-green: #1e7f62;
-      --card-bg: #ffffff;
-      --border-color: #e5e7eb;
-      --shadow: 0 10px 30px rgba(0,0,0,.06);
-      --radius: 16px;
+      --bg-color: #0c0c0f;
+      --text-color: #ffffff;
+      --muted-color: #a0a0a0;
+      --radius: 20px;
     }
 
     /* Genel Sıfırlama */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body {
+    body {
       font-family: 'Inter', system-ui, Arial, sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
       line-height: 1.6;
+      /* Arka plan aurora efekti */
+      background-image: radial-gradient(circle at 95% 5%, rgba(29, 127, 98, 0.4), transparent 40%),
+                        radial-gradient(ellipse at 85% 15%, rgba(45, 105, 158, 0.3), transparent 50%);
+      background-attachment: fixed;
     }
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
 
-    /* Header */
-    header {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(247,247,245,.85);
-      backdrop-filter: saturate(160%) blur(8px);
-      border-bottom: 1px solid var(--border-color);
-      padding: 12px 24px;
-    }
-    .header-brand a {
-      display: block;
-      margin: 0 auto;
-      width: fit-content;
-    }
-    .header-brand img {
-      height: 60px;
-    }
-
     /* Sayfa Genel Yapısı */
     .page-container {
-      max-width: 1100px;
-      margin: 60px auto;
-      padding: 0 24px;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 24px;
       text-align: center;
     }
-    .page-title {
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(36px, 5vw, 48px);
-      margin-bottom: 16px;
-    }
-    .page-subtitle {
-      max-width: 600px;
-      margin: 0 auto 50px auto;
-      font-size: 18px;
-      color: var(--muted-color);
-    }
+
+    /* Header (Sadece Logo) */
+    .header-logo {
+        margin-bottom: 40px;
+    }
+    .header-logo img {
+        height: 60px; /* Logo boyutunu buradan ayarlayabilirsiniz */
+        width: auto;
+        display: inline-block;
+    }
+
+    /* Başlıklar */
+    .pre-heading {
+        font-size: 16px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+        font-weight: 500;
+    }
+    .main-heading {
+        font-family: 'Anton', sans-serif;
+        font-size: clamp(48px, 10vw, 90px);
+        letter-spacing: 0.05em;
+        line-height: 1;
+        text-transform: uppercase;
+        color: #fff;
+        margin-bottom: 16px;
+    }
+    .sub-heading {
+        font-size: 16px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--muted-color);
+        margin-bottom: 60px;
+    }
 
     /* Fiyat Kartları Izgarası */
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: 1fr;
       gap: 30px;
-      align-items: stretch;
     }
     .pricing-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
+      /* CAM EFEKTİ (GLASSMORPHISM) */
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: var(--radius);
       padding: 32px;
       text-align: left;
-      display: flex;
-      flex-direction: column;
-      box-shadow: var(--shadow);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .pricing-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(0,0,0,.08);
-    }
-    /* Vurgulanan Kart */
-    .pricing-card.highlighted {
-      border-color: var(--accent-green);
-      transform: scale(1.03);
-    }
-    .pricing-card.highlighted:hover {
-      transform: scale(1.03) translateY(-5px);
-    }
-    @media (max-width: 1024px) {
-      .pricing-card.highlighted { transform: none; }
-    }
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 24px;
+    }
     .card-title {
       font-weight: 700;
-      font-size: 20px;
-      margin-bottom: 8px;
+      font-size: 24px;
+      text-transform: uppercase;
     }
     .card-price {
-      font-size: 48px;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-    .card-price span {
-      font-size: 16px;
-      font-weight: 500;
-      color: var(--muted-color);
-    }
-    .card-description {
-      color: var(--muted-color);
-      margin-bottom: 24px;
-      min-height: 48px; /* Kartların hizalı durması için */
+      font-size: 28px;
+      font-weight: 900;
     }
     .features-list {
-      margin-top: 24px;
-      border-top: 1px solid var(--border-color);
-      padding-top: 24px;
-      flex-grow: 1; /* Butonların en altta kalmasını sağlar */
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
     }
     .feature-item {
       display: flex;
       align-items: center;
-      margin-bottom: 12px;
     }
     .feature-item svg {
-      color: var(--accent-green);
+      color: var(--text-color);
       margin-right: 12px;
-      width: 20px; height: 20px;
+      width: 18px; height: 18px;
       flex-shrink: 0;
     }
-    .cta-button {
-      display: block;
-      width: 100%;
-      text-align: center;
-      padding: 14px;
-      border-radius: 8px;
-      font-weight: 600;
-      background: #fff;
-      color: var(--text-color);
-      border: 1px solid var(--border-color);
-      transition: background-color 0.2s ease, color 0.2s ease;
-    }
-    .cta-button:hover {
-      background: var(--bg-color);
-    }
-    .pricing-card.highlighted .cta-button, .cta-button.primary {
-      background: var(--accent-green);
-      color: #fff;
-      border-color: var(--accent-green);
-    }
-    .pricing-card.highlighted .cta-button:hover, .cta-button.primary:hover {
-      background: #18684f; /* Hafif koyu yeşil */
-    }
 
-    /* Footer */
-    footer {
-      margin-top: 80px;
-      border-top: 1px solid #e5e7eb;
-      background: #fff;
-      padding: 20px 24px;
-      text-align: center;
-      font-size: 14px;
-      color: #6b7280;
-    }
+    /* Footer */
+    .footer {
+        margin-top: 80px;
+        font-size: 14px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--muted-color);
+    }
 
+    /* Responsive */
+    @media (min-width: 640px) {
+        .features-list {
+            grid-template-columns: 1fr 1fr; /* Küçük ekranlarda 2'li liste */
+        }
+    }
+    @media (min-width: 1024px) {
+        .pricing-grid {
+            /* Büyük ekranlarda 3'lü ızgara */
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .features-list {
+            grid-template-columns: 1fr; /* Kartlar yan yana gelince liste tek sütun */
+        }
+    }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="header-brand">
-    <a href="/" title="Ana Sayfa"><img src="img/logo.png" alt="Murat Sağlam Logo"></a>
-  </div>
-</header>
+<main class="page-container">
+    <div class="header-logo">
+        <a href="/"><img src="img/logo-beyaz.png" alt="Murat Sağlam Logo"></a>
+    </div>
 
-<main>
-  <section class="page-container">
-    <h1 class="page-title">Hizmet Paketlerimiz</h1>
-    <p class="page-subtitle">Markanızın dijital dünyadaki ihtiyaçlarına yönelik, şeffaf ve sonuç odaklı çözümler.</p>
+    <p class="pre-heading">Hizmetlerimiz</p>     <h1 class="main-heading">HİZMET PAKETLERİ</h1>     <p class="sub-heading">Markanızı yükseltmeye hazırız</p>     <div class="pricing-grid">
 
-    <div class="pricing-grid">
             <div class="pricing-card">
-        <h3 class="card-title">Başlangıç Paketi</h3>
-        <div class="card-price">₺2.500<span>/aylık</span></div>
-        <p class="card-description">Dijital varlığını yeni oluşturan veya temel düzeyde yönetmek isteyen markalar için ideal.</p>
+        <div class="card-header">
+          <h2 class="card-title">MARKA PAKETİ</h2>
+          <span class="card-price">₺3000</span>
+        </div>
         <ul class="features-list">
-          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Sosyal Medya Yönetimi (1 Platform)</li>
-          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Aylık 8 Adet Post Tasarımı</li>
-          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Aylık Raporlama</li>
+          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>Logo Tasarımı</li>
+          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>Marka Renkleri & Fontları</li>
+          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>Kartvizit Tasarımı</li>
+          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>Sosyal Medya Kiti</li>
         </ul>
-        <a href="https://wa.me/905330565239" target="_blank" rel="noopener" class="cta-button">Hemen Başla</a>
-      </div>
-
-            <div class="pricing-card highlighted">
-        <h3 class="card-title">Profesyonel Paket</h3>
-        <div class="card-price">₺5.000<span>/aylık</span></div>
-        <p class="card-description">Büyümeyi hedefleyen ve dijitalde daha aktif olmak isteyen markalar için en popüler seçim.</p>
-        <ul class="features-list">
-          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Sosyal Medya Yönetimi (2 Platform)</li>
-          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Aylık 12 Adet Post & 4 Reels Video</li>
-          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Profesyonel Fotoğraf Çekimi (1 Gün)</li>
-          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Detaylı Raporlama ve Strateji</li>
-        </ul>
-        <a href="https://wa.me/905330565239" target="_blank" rel="noopener" class="cta-button">Hemen Başla</a>
       </div>
 
             <div class="pricing-card">
-        <h3 class="card-title">Kurumsal Paket</h3>
-        <div class="card-price">Teklif Alın</div>
-        <p class="card-description">360 derece dijital pazarlama ve özel prodüksiyon ihtiyaçları için size özel çözümler.</p>
+        <div class="card-header">
+          <h2 class="card-title">SOSYAL MEDYA PAKETİ</h2>
+          <span class="card-price">₺2500</span>
+        </div>
         <ul class="features-list">
-          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Tüm Platformlarda Yönetim</li>
-          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Özel Video & Fotoğraf Prodüksiyonu</li>
-          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Web Sitesi İçerik Desteği</li>
-          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Aylık Strateji Toplantıları</li>
+          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>10 Sosyal Medya Şablonu</li>
+          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>Öne Çıkanlar Kapakları</li>
+          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>5 Hikaye Şablonu</li>
+          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>1 Aylık İçerik Planı</li>
         </ul>
-        <a href="https://wa.me/905330565239" target="_blank" rel="noopener" class="cta-button">Teklif Al</a>
+      </div>
+
+            <div class="pricing-card">
+        <div class="card-header">
+          <h2 class="card-title">WEB SİTESİ PAKETİ</h2>
+          <span class="card-price">₺6000</span>
+        </div>
+        <ul class="features-list">
+          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>5 Özel Sayfa</li>
+          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>Mobil Uyumlu Tasarım</li>
+          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>Temel SEO</li>
+          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>1 Revizyon Hakkı</li>
+        </ul>
       </div>
 
     </div>
-  </section>
-</main>
 
-<footer>
-  © 2025 Murat Sağlam
-</footer>
+    <div class="footer">
+        <p>MURATSAGLAM.CO</p>
+    </div>
+</main>
 
 </body>
 </html>
