@@ -291,7 +291,7 @@
 
 <script>
   /* ==== CACHE-BUSTING (yerel assetler için) ==== */
-  const V = '20250901-1';
+  const V = '20250901-2';
   function bust(sel, attr){
     document.querySelectorAll(sel).forEach(el=>{
       const url = el.getAttribute(attr); if(!url) return;
@@ -302,11 +302,9 @@
       }
     });
   }
-  bust('img','src');
-  bust('link[rel="stylesheet"]','href');
-  bust('script[src]','src');
+  bust('img','src'); bust('link[rel="stylesheet"]','href'); bust('script[src]','src');
 
-  // Portfolyo & Hizmetler linkleri aynı sekmede, ama cache’e takılmasın
+  // Portfolyo & Hizmetler linkleri aynı sekmede, cache’e takılmasın
   document.querySelectorAll('a[href="/portfolyo.html"], a[href="/hizmetler.html"]').forEach(a=>{
     const u = new URL(a.getAttribute('href'), location.origin);
     u.searchParams.set('v', V);
@@ -317,14 +315,15 @@
 <script>
 /* ====== LOGO GRID AUTO-LOADER + İÇERİK TABANLI ÖLÇEK ======
    - Klasör: img/markalar/
-   - Dosya adları: 1.jpg / 2.png / 3.webp ...
+   - Dosya adları: 1.jpg / 2.png / 3.webp / 4.svg ...
    - Boşluk oranı yüksek logoları 1.60x’e kadar büyütür.
+   - Hiç numaralı dosya bulunamazsa, eski statik listeye otomatik düşer.
 */
 (function(){
   const grid = document.getElementById('logoGrid');
   if(!grid) return;
 
-  const exts = ['.png','.jpg','.jpeg','.webp'];
+  const exts = ['.png','.jpg','.jpeg','.webp','.svg'];
   const base = 'img/markalar/';
   const maxIndex = 300;
   const maxMissInRow = 10;
@@ -332,14 +331,14 @@
   // İstersen tekil ayar: {'13':1.45, '21':1.3}
   const manualBoost = {};
 
-  let misses = 0;
+  let misses = 0, loaded = 0, finished = false;
 
-  function addLogo(src, num){
+  function addCell(src, alt, numForBoost){
     const cell = document.createElement('div');
     cell.className='logo-cell';
     const img = document.createElement('img');
     img.className='logo-img';
-    img.alt = `Logo ${num}`;
+    img.alt = alt || 'Logo';
     img.loading='lazy'; img.decoding='async';
     img.src = src;
 
@@ -347,11 +346,10 @@
       try {
         let boost = 1;
 
-        if (manualBoost[num]) {
-          boost = manualBoost[num];
+        if (numForBoost && manualBoost[numForBoost]) {
+          boost = manualBoost[numForBoost];
         } else {
           const w = img.naturalWidth, h = img.naturalHeight;
-
           if (Math.max(w,h) < 400) {
             boost = 1.25;
           } else {
@@ -381,7 +379,6 @@
               const frac = Math.max((maxX-minX+1)/w, (maxY-minY+1)/h);
               const mapped = 1 + Math.max(0, (1 - Math.min(frac,1)) * 0.75);
               boost = Math.min(1.60, Math.max(1.0, mapped));
-
               const ar = w/h;
               if (ar>0.85 && ar<1.15 && Math.max(w,h)>=1200){
                 boost = Math.min(1.60, Math.max(boost, 1.35));
@@ -411,15 +408,44 @@
       probe.onerror= ()=>{ tryExt(i+1); };
       probe.src = url + `?v=${Date.now()}`; // cache bypass
     }
-    function hit(url){ misses=0; addLogo(url, String(n)); schedule(n+1); }
-    function miss(){ misses++; if (misses>=maxMissInRow || n>=maxIndex) return; schedule(n+1); }
+    function hit(url){ misses=0; loaded++; addCell(url, `Logo ${n}`, String(n)); schedule(n+1); }
+    function miss(){
+      misses++;
+      if (misses>=maxMissInRow || n>=maxIndex){
+        finish(); return;
+      }
+      schedule(n+1);
+    }
     tryExt(0);
   }
 
-  function schedule(n){
-    (window.requestIdleCallback || window.setTimeout)(()=>tryNext(n), 0);
+  function schedule(n){ setTimeout(()=>tryNext(n), 0); }
+
+  function finish(){
+    if (finished) return;
+    finished = true;
+    if (loaded>0) return; // numaralı dosyalar bulundu → bitti
+
+    // === FALLBACK: eski statik liste (img/ altında duranlar) ===
+    const fallback = [
+      ['img/adidas.png','Adidas'],['img/yandex.png','Yandex'],['img/kempinski.png','Kempinski Belek'],
+      ['img/hepsiemlak.png','Hepsi Emlak'],['img/ebebek.png','Ebebek'],['img/classicfashion.png','Classic Fashion'],
+      ['img/esta.png','Esta Construction'],['img/acibadem.png','Acıbadem Sağlık Grubu'],['img/interpress.png','Interpress'],
+      ['img/binomo.png','Binomo'],['img/pudo.png','Pudo'],['img/antalyagolf.png','Antalya Golf Club'],
+      ['img/icrypex.png','ICRYPEX'],['img/arikbey.png','Arık Bey'],['img/benesta.png','Benesta'],
+      ['img/qazaq.png','Qazaq Republic'],['img/tgl.png','TGL'],['img/celtic.png','Celtic'],
+      ['img/frankhan.png','Frankhan'],['img/doliche.png','Doliche'],['img/flowerbox.png','Flower Box'],
+      ['img/mio.png','Mio Güzellik Salonu'],['img/bursamodern.png','Bursa Modern'],['img/hipokampus.png','Hipokampüs'],
+      ['img/teeo.png','Tee\'o'],['img/shelby.png','Shelby Etiler'],['img/vispera.png','Vispera'],
+      ['img/fabrikk.png','Fabrikk'],['img/stammgast.png','Stammgast'],['img/gebbe.png','Gebbe'],
+      ['img/richhospital.png','Rich Hospital'],['img/mezemix.png','Mezemix'],['img/mavibalon.png','Mavi Balon Anaokulu'],
+      ['img/samadhi.png','Samadhi Otel'],['img/armel.png','Armel Alaçatı'],['img/baysako.png','Bay Sako'],
+      ['img/mavicove.png','Mavi Cove Restaurant'],['img/beachhill.png','Beach Hill Restaurant']
+    ];
+    fallback.forEach(([src,alt])=>addCell(src,alt,null));
   }
 
+  // başlat
   schedule(1);
 })();
 </script>
